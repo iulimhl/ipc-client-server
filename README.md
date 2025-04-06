@@ -13,7 +13,7 @@ A C-based client-server application for authenticated command execution using in
 - Commands executed in child processes (no exec/system used)
 
 ## Demo
-![Video](demo1.mp4) 
+![Video](demo2.mp4) 
 
 ## Technologies
 - C
@@ -27,6 +27,6 @@ A C-based client-server application for authenticated command execution using in
    g++ server.c -o server
    ./server
 3. Compile the client:
-   gcc client.c -o client
+   gcc slienti.c -o client
    ./client
 

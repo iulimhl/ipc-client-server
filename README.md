@@ -1,32 +1,17 @@
-# Client-Server Command System (C, IPC)
+# Client-Server Commands with Unix IPC
 
-A C-based client-server application for authenticated command execution using inter-process communication mechanisms.
+A C++ exercise in communication between processes on Linux. The client sends text commands through named pipes, and the server uses child processes, pipes, and Unix socket pairs to handle them.
 
-## Features
-- Command-based protocol using newline-delimited input and byte-prefixed responses
-- Authentication with `login : username`, where username must exist in the users.txt file
-- Commands include:
-  - `get-logged-users` – lists currently logged-in users
-  - `get-proc-info : pid` – shows info from `/proc/<pid>/status`
-  - `logout`, `quit`
-- Communication handled via pipes, FIFOs, and socketpairs
-- Commands executed in child processes (no exec/system used)
+## Run on Linux
 
-## Demo
-![Video](demo2.mp4) 
+From the repository root, compile both programs with `g++`. The source files have `.c` extensions but use C++.
 
-## Technologies
-- C
-- Linux
-- Pipes, FIFO, Socketpair
-- File parsing
+```sh
+g++ server.c -o server
+g++ slienti.c -o client
+./server
+```
 
-## How to Run
-1. Open two terminals.
-2. Compile the server:
-   g++ server.c -o server
-   ./server
-3. Compile the client:
-   gcc slienti.c -o client
-   ./client
+In a second terminal in the same folder, run `./client`. Start with `login : <username>` using a name from `users.txt`. Try `get-logged-users` or `get-proc-info : 1`, then `logout` or `quit`. Process details come from Linux's `/proc` filesystem.
 
+[Watch the demo](demo2.mp4)
